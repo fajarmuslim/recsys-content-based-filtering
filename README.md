@@ -1,8 +1,7 @@
 # Recommender System API with Content Based Filtering Flavour
 
 ## What does this do?
-API implementation of [this article](https://towardsdatascience.com/beginners-recommendation-systems-with-python-ee1b08d2efb6
-)
+API implementation of [this article](https://towardsdatascience.com/beginners-recommendation-systems-with-python-ee1b08d2efb6)
 
 Diagram of this API <br/>
 ![Diagram](app/utils/diagram.png)
@@ -29,7 +28,8 @@ Diagram of this API <br/>
     ```bash
     ./scripts/download.sh
     ```
-7. Run the postgres docker container as our db
+7. Download model from [this link](https://drive.google.com/drive/u/0/folders/1wTmlJcE19H3Q4zG9wJ3Emc2lbzh66z-f) and put inside `app/ml_model` folder
+8. Run the postgres docker container as our db
     ```bash
     docker run -d \
         -p 5432:5432 \
@@ -39,11 +39,11 @@ Diagram of this API <br/>
         -e POSTGRES_DB=postgres \
         postgres
     ```
-8. Run db migration
+9. Run db migration
    ```bash
     ./scripts/migrate.sh
     ```
-9. Feed the data from csv into our db. The csv file that already downloaded in step 2
+10. Feed the data from csv into our db. The csv file that already downloaded in step 2
     ```bash
     python3 feed_data.py
     ```

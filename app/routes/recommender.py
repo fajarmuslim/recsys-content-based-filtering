@@ -39,7 +39,11 @@ def most_weighted_average_movies(
     db: Session = Depends(get_db),
     api_key: APIKey = Depends(get_api_key),
 ):
-    return recommender_predictor.get_most_weighted_average_movies(db)
+    return create_standard_response(
+        status="OK",
+        message="OK",
+        data=recommender_predictor.get_most_weighted_average_movies(db),
+    )
 
 
 @router.post(

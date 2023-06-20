@@ -25,7 +25,15 @@ class CRUDMoviesRanked(CRUDBase[Movies_Ranked]):
     def read_relevant_movies(
         self, db: Session, ids
     ) -> Optional[Movies_Ranked]:
-        return db.query(Movies_Ranked).filter(Movies_Ranked.id.in_(ids)).all()
+        ids_copied = ids.copy()
+        ids_copied.sort()
+        rec_result = []
+        for id in ids:
+            rec_result.append(
+                db.query(Movies_Ranked).filter(Movies_Ranked.id == id).first()
+            )
+
+        return rec_result
 
 
 movies_ranked = CRUDMoviesRanked(Movies_Ranked)

@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "recsys-content-based-filtering"
+version = "0.1.0"
+description = ""
+authors = ["fajar_muslim__ <fajar.muslim@efishery.com>"]
+readme = "README.md"
+packages = [{include = "recsys_content_based_filtering"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+alembic = "^1.11.1"
+pytz = "^2023.3"
+pydantic = {extras = ["dotenv"], version = "^1.10.9"}
+psycopg2 = "^2.9.6"
+psycopg2-binary = "^2.9.6"
+pandas = "^2.0.2"
+fastapi = "^0.97.0"
+uvicorn = "^0.22.0"
+dvc = "^3.1.0"
+
+
+[tool.poetry.group.dev.dependencies]
+taskipy = "^1.11.0"
+
+[tool.taskipy.tasks]
+app = {cmd = 'uvicorn app.main:app --host 0.0.0.0 --port 8001 --reload', help='run service'}
+
+[tool.black]
+line-length = 79
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
